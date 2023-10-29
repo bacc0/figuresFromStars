@@ -15,7 +15,12 @@ def draw_pyramid(n):
             print(spaces + "*" + " " * (2 * i - 3) + "*")
 
 def main():
-    choice = input("Enter 'a' for right angle, 'b' for upside-down right angle, or 'c' for a pyramid: ")
+    choice = input("_______________________________ "
+                   "\nPlease Enter: "
+                   "\n'a' for right angle,"
+                   "\n'b' for upside-down right angle or "
+                   "\n'c' for a pyramid: "
+                   "\n_______________________________ \n")
 
     if choice not in ('a', 'b', 'c'):
         print("Invalid choice. Please select 'a', 'b', or 'c.")

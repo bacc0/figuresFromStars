@@ -21,17 +21,21 @@ def draw_pyramid(n):
 def main():
     while True:  # Add a loop for repeated figures
         # Prompt the user to choose a figure
-        choice = input("_______________________________ "
-                       "\nPlease Enter: "
-                       "\n'a' for right angle,"
-                       "\n'b' for upside-down right angle or "
-                       "\n'c' for a pyramid: "
-                       "\n_______________________________ \n")
+        while True:  # Use an inner loop for reentering the correct letter
+            choice = input("_______________________________ "
+                           "\nPlease Enter: "
+                           "\n'a' for right angle,"
+                           "\n'b' for upside-down right angle or "
+                           "\n'c' for a pyramid: "
+                           "\n_______________________________ \n")
 
-        # Check if the choice is valid
-        if choice not in ('a', 'b', 'c'):
-            print("Invalid choice. Please select 'a', 'b', or 'c.")
-            continue
+            try:
+                # Check if the choice is valid (accepts both lower and uppercase)
+                if choice.lower() not in ('a', 'b', 'c'):
+                    raise ValueError("Invalid choice. Please select 'a', 'b', or 'c.")
+                break  # Exit the inner loop when a valid choice is entered
+            except ValueError as e:
+                print(e)
 
         # Prompt the user for the number of rows
         n = int(input("Enter the number of rows (min 5): "))
@@ -42,6 +46,7 @@ def main():
             continue
 
         # Draw the selected figure based on the user's choice
+        choice = choice.lower()  # Convert the choice to lowercase
         if choice == 'a':
             draw_right_angle(n)
         elif choice == 'b':
@@ -53,7 +58,7 @@ def main():
         another = input("Do you want to draw another figure? (y/n): ")
         if another.lower() != 'y':  # Use 'y' for yes
             print("_______________________________"
-                  "\n Goodbye!"
+                  "\nGoodbye!"
                   "\n_______________________________")
             break  # Exit the loop if the user does not want to draw another figure
 
